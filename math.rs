@@ -10,11 +10,19 @@ fn panic(_panic: &PanicInfo<'_>) -> ! {
 
 #[no_mangle]
 pub unsafe extern "C" fn helloWorld() {
-    js_log(b"hello, world!");
-    js_log(b"Hello, Worldz!");
+    log(&"hello, world!");
+    log(&"Hello, Worldz!");
+}
+
+fn log(s: &str) {
+    unsafe {
+        js_log(s.as_ptr(), s.len())
+    }
 }
 
 #[allow(dead_code)]
     extern "C" {
-        fn js_log(x: &[u8]);
+        fn js_log(ptr: *const u8, len: usize);
     }
+
+
