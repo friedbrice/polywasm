@@ -2,7 +2,7 @@
 async function start() {
     var memoryView = new Uint8Array();
     const utf8decoder = new TextDecoder();
-    function(stringAddr, stringLen) {
+    function log(stringAddr, stringLen) {
         let bytes = memoryView.subarray(stringAddr, stringAddr+stringLen);
         console.log(utf8decoder.decode(bytes))
     }
