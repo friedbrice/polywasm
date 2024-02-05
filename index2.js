@@ -7,7 +7,7 @@ async function start() {
         console.log(utf8decoder.decode(bytes))
     }
     const math = await WebAssembly.instantiateStreaming(
-        fetch("math.wasm"),
+        fetch("zig-out/lib/zigmath.wasm"),
         {
             "env": {
                 "js_log": log
